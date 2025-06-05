@@ -18,6 +18,7 @@ Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(
     Route::post('/update-category/{id}', 'postUpdateCategory');
     Route::get('/admin/add-product', 'addProduct');
     Route::post('/admin/add-product', 'postAddProduct');
+    Route::get('/admin/view-products', 'viewProducts');
 });
 
 Route::get('/dashboard', function () {
