@@ -21,4 +21,4 @@
     <script src="{{asset('/template/admin/js/charts-home.js')}}"></script>
     <script src="{{asset('/template/admin/js/front.js')}}"></script>
   </body>
-<!-- </html> -->
+</html>
