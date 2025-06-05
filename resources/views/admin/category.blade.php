@@ -63,10 +63,14 @@
                 <table class="table-deg">
                     <tr>
                         <th>Category Name</th>
+                        <th>Delete</th>
                     </tr>
                     @foreach($categories as $category)
                     <tr>
                         <td>{{$category->category}}</td>
+                        <td>
+                            <a class="btn btn-danger" href="{{ url('/delete-category', $category->id) }}">Delete</a>
+                        </td>
                     </tr>
                     @endforeach
                 </table>

@@ -13,6 +13,7 @@ Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(
     Route::get('/admin/dashboard', 'index');
     Route::get('/admin/view-category', 'viewCategory');
     Route::post('/admin/add-category', 'addCategory');
+    Route::get('/delete-category/{id}', 'deleteCategory');
 });
 
 Route::get('/dashboard', function () {
