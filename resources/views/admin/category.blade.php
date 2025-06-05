@@ -19,6 +19,23 @@
         h1 {
             color: white;
         }
+
+        .table-deg {
+            text-align: center;
+            margin: 50px auto;
+            border: 2px solid white;
+
+            th {
+                color: white;
+                font-weight: bold;
+                padding: 20px;
+                border-bottom: 1px solid rgb(196, 196, 196);
+            }
+
+            td {
+                padding: 10px;
+            }
+        }
     </style>
   </head>
   <body>
@@ -41,6 +58,18 @@
                         </form>
                     </div>
                 </div>
+            </div>
+            <div>
+                <table class="table-deg">
+                    <tr>
+                        <th>Category Name</th>
+                    </tr>
+                    @foreach($categories as $category)
+                    <tr>
+                        <td>{{$category->category}}</td>
+                    </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>
