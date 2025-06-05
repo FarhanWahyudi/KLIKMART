@@ -14,6 +14,8 @@ Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(
     Route::get('/admin/view-category', 'viewCategory');
     Route::post('/admin/add-category', 'addCategory');
     Route::get('/delete-category/{id}', 'deleteCategory');
+    Route::get('/update-category/{id}', 'updateCategory');
+    Route::post('/update-category/{id}', 'postUpdateCategory');
 });
 
 Route::get('/dashboard', function () {

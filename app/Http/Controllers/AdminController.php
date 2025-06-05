@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class AdminController extends Controller
 {
@@ -39,5 +41,21 @@ class AdminController extends Controller
             return redirect()->back();
         }
         return redirect()->back();
+    }
+
+    public function updateCategory(string $id): Response
+    {
+        $category = Category::findOrFail($id);
+        return response()->view('admin.update', compact('category'));
+    }
+
+    public function postUpdateCategory(Request $request, string $id): RedirectResponse
+    {
+        $category = Category::findOrFail($id);
+        $category->category = $request->category;
+        $category->update();
+        toastr()->closeButton()->addSuccess('Category Update Successfully');
+
+        return redirect('/admin/view-category');
     }
 }
