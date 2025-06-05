@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -57,5 +58,29 @@ class AdminController extends Controller
         toastr()->closeButton()->addSuccess('Category Update Successfully');
 
         return redirect('/admin/view-category');
+    }
+
+    public function addProduct(): Response
+    {
+        $categories = Category::all();
+        return response()->view('admin.addProduct', compact('categories'));
+    }
+
+    public function postAddProduct(Request $request): RedirectResponse
+    {
+        $image = $request->image;
+        $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $request->image->move('products', $imagename);
+        Product::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $imagename,
+            'price' => $request->price,
+            'category' => $request->category,
+            'quantity' => $request->quantity
+        ]);
+        toastr()->closeButton()->addSuccess('Product Add Successfully');
+
+        return redirect()->back();
     }
 }
