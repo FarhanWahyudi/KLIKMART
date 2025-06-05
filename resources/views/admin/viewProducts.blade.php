@@ -83,6 +83,9 @@
                     @endforeach
                 </table>
             </div>
+            <div class="div-deg">
+                {{$products->onEachSide(1)->links()}}
+            </div>
         </div>
     </div>
     <!-- JavaScript files-->
