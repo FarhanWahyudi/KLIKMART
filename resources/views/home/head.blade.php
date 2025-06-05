@@ -7,7 +7,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="{{asset('template/home/images/favicon.png')}}" type="image/x-icon">
 
 <title>
 Giftos
@@ -17,9 +17,9 @@ Giftos
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
 <!-- bootstrap core css -->
-<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('template/home/css/bootstrap.css')}}" />
 
 <!-- Custom styles for this template -->
-<link href="{{asset('css/style.css')}}" rel="stylesheet" />
+<link href="{{asset('template/home/css/style.css')}}" rel="stylesheet" />
 <!-- responsive style -->
-<link href="{{asset('css/responsive.css')}}" rel="stylesheet" />
+<link href="{{asset('template/home/css/responsive.css')}}" rel="stylesheet" />

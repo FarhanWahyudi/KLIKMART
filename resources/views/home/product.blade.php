@@ -10,7 +10,7 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p1.png" alt="">
+                            <img src="{{asset('/template/home/images/p1.png')}}" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
@@ -35,7 +35,7 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p2.png" alt="">
+                            <img src="{{asset('/template/home/images/p2.png')}}" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
@@ -60,7 +60,7 @@
             <div class="box">
                 <a href="">
                     <div class="img-box">
-                        <img src="images/p3.png" alt="">
+                        <img src="{{asset('/template/home/images/p3.png')}}" alt="">
                     </div>
                     <div class="detail-box">
                         <h6>
@@ -85,7 +85,7 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p4.png" alt="">
+                            <img src="{{asset('/template/home/images/p4.png')}}" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
@@ -110,7 +110,7 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p5.png" alt="">
+                            <img src="{{asset('/template/home/images/p5.png')}}" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
@@ -135,7 +135,7 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p6.png" alt="">
+                            <img src="{{asset('/template/home/images/p6.png')}}" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
@@ -160,7 +160,7 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p7.png" alt="">
+                            <img src="{{asset('/template/home/images/p7.png')}}" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
@@ -185,7 +185,7 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p8.png" alt="">
+                            <img src="{{asset('/template/home/images/p8.png')}}" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
