@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 use function PHPUnit\Framework\fileExists;
 
@@ -96,12 +97,44 @@ class AdminController extends Controller
     {
         $product = Product::find($id);
         $imagePath = public_path("products/$product->image");
-        if (fileExists($imagePath)) {
+        if (file_exists($imagePath)) {
             unlink($imagePath);
         }
         $product->delete();
         toastr()->closeButton()->addSuccess('Product Delete Successfully');
 
         return redirect()->back();
+    }
+
+    public function updateProduct(string $id): Response {
+        $product = Product::find($id);
+        $categories = Category::all();
+        return response()->view('admin.updateProduct', compact('product', 'categories'));
+    }
+
+    public function postUpdateProduct(Request $request, string $id): RedirectResponse
+    {
+        $image = $request->image;
+
+        $product = Product::findOrFail($id);
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->category = $request->category;
+        if ($image) {
+            $imagename = time() . '.' . $image->getClientOriginalExtension();
+            $request->image->move('products', $imagename);
+            $imagePath = public_path("products/$product->image");
+            $product->image = $imagename;
+            if (file_exists($imagePath)) {
+                Log::info('ada');
+                unlink($imagePath);
+            }
+        }
+        $product->update();
+        toastr()->closeButton()->addSuccess('Product Update Successfully');
+
+        return redirect('/admin/view-products');
     }
 }
