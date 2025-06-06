@@ -137,4 +137,12 @@ class AdminController extends Controller
 
         return redirect('/admin/view-products');
     }
+
+    public function searchProduct(Request $request): Response
+    {
+        $search = $request->search;
+        $products = Product::where('title', 'LIKE', '%' . $search . '%')->paginate(3);
+
+        return response()->view('admin.viewProducts', compact('products', 'search'));
+    }
 }

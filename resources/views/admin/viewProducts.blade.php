@@ -54,6 +54,11 @@
             <div class="page-header">
                 <div class="content-fluid">
                     <h1>Products</h1>
+                    <form action="{{url('/admin/product-search')}}" method="get">
+                        @csrf
+                        <input type="text" name="search" value="{{$search}}">
+                        <input type="submit" value="Search">
+                    </form>
                 </div>
             </div>
             <div class="div-deg">

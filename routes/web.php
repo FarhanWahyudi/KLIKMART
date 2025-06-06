@@ -22,6 +22,7 @@ Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(
     Route::get('/admin/delete-product/{id}', 'deleteProduct');
     Route::get('/admin/update-product/{id}', 'updateProduct');
     Route::post('/admin/update-product/{id}', 'postUpdateProduct');
+    Route::get('/admin/product-search', 'searchProduct');
 });
 
 Route::get('/dashboard', function () {
