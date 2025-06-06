@@ -24,6 +24,9 @@
                                 </span>
                             </h6>
                         </div>
+                        <div>
+                            <a class="btn btn-success" href="{{url('/product/detail', $product->id)}}" style="color: white;">Details</a>
+                        </div>
                         <div class="new">
                             <span>
                                 New

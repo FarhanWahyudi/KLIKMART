@@ -13,4 +13,10 @@ class HomeController extends Controller
         $products = Product::all();
         return response()->view('home.index', compact('products'));
     }
+
+    public function productDetail(string $id): Response
+    {
+        $productDetail = Product::find($id);
+        return response()->view('home.productDetail', compact('productDetail'));
+    }
 }
