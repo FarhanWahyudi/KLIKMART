@@ -18,7 +18,7 @@
             width: 80%;
 
             tr {
-                /* border: 1px solid grey; */
+                text-align: center;
                 
                 th {
                     background-color:rgb(46, 46, 46);
@@ -65,6 +65,7 @@
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Image</th>
+                        <th>Delete</th>
                     </tr>
                     @foreach($products as $product)
                     <tr>
@@ -79,6 +80,9 @@
                             @endphp
                             <div class="image-container" style="background-image: url('{{$imageUrl}}')"></div>
                         </td>
+                        <td>
+                            <a class="btn btn-danger" href="{{url('/admin/delete-product', $product->id)}}" onclick="confirmation(event)" >Delete</a>
+                        </td>
                     </tr>
                     @endforeach
                 </table>
@@ -88,7 +92,30 @@
             </div>
         </div>
     </div>
+
+    
     <!-- JavaScript files-->
+
+    <script type="text/javascript">
+        function confirmation(ev) {
+            ev.preventDefault();
+            
+            var urlToRedirect = ev.currentTarget.getAttribute('href');
+
+            swal({
+                title: 'Are You Sure to Delete This',
+                text: 'This Delete will be Permanent',
+                icon: 'warning',
+                buttons: true,
+                dengerMode: true
+            }).then((willCancel)=>{
+                if (willCancel) {
+                    window.location.href=urlToRedirect;
+                }
+            });
+        }
+    </script>
+
     <script src="{{asset('/template/admin/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('/template/admin/vendor/popper.js/umd/popper.min.js')}}"> </script>
     <script src="{{asset('/template/admin/vendor/bootstrap/js/bootstrap.min.js')}}"></script>

@@ -8,6 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use function PHPUnit\Framework\fileExists;
+
 class AdminController extends Controller
 {
     public function index()
@@ -88,5 +90,18 @@ class AdminController extends Controller
     {
         $products = Product::paginate(3);
         return response()->view('admin.viewProducts', compact('products'));
+    }
+
+    public function deleteProduct(string $id): RedirectResponse
+    {
+        $product = Product::find($id);
+        $imagePath = public_path("products/$product->image");
+        if (fileExists($imagePath)) {
+            unlink($imagePath);
+        }
+        $product->delete();
+        toastr()->closeButton()->addSuccess('Product Delete Successfully');
+
+        return redirect()->back();
     }
 }
