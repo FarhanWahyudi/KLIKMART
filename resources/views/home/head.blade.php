@@ -23,3 +23,11 @@ Giftos
 <link href="{{asset('template/home/css/style.css')}}" rel="stylesheet" />
 <!-- responsive style -->
 <link href="{{asset('template/home/css/responsive.css')}}" rel="stylesheet" />
+
+<style type="text/css">
+    .logout-button {
+        border: none;
+        background-color:transparent;
+        margin-right: 10px;
+    }
+</style>
