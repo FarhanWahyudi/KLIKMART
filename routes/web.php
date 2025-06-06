@@ -10,6 +10,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/product/detail/{id}', 'productDetail');
     Route::get('/product/add-cart/{id}', 'addCart')->middleware('auth');
     Route::get('/mycart', 'viewCart')->middleware('auth');
+    Route::get('/product/delete/{id}', 'deleteCart')->middleware('auth');
 });
 
 Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(function () {

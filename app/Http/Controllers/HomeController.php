@@ -66,4 +66,12 @@ class HomeController extends Controller
 
         return response()->view('home.carts', compact('count', 'carts'));
     }
+
+    public function deleteCart(string $id): RedirectResponse
+    {
+        Cart::findOrFail($id)->delete();
+        toastr()->closeButton()->addSuccess('Product Delete from the Cart Successfully');
+
+        return redirect()->back();
+    }
 }

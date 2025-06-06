@@ -7,9 +7,11 @@
 
         .div-deg {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 30px;
+            gap: 30px;
         }
 
         table {
@@ -60,7 +62,13 @@
                 <th>Product Title</th>
                 <th>Price</th>
                 <th>Image</th>
+                <th>Option</th>
             </tr>
+
+            <?php
+                $value = 0;
+            ?>
+            
             @foreach($carts as $cart)
             <tr>
                 <td>{{$cart->product->title}}</td>
@@ -71,9 +79,18 @@
                     @endphp
                     <div class="image-container" style="background-image: url('{{$imageUrl}}')"></div>
                 </td>
+                <td>
+                    <a class="btn btn-danger" href="{{url('/product/delete', $cart->id)}}">Delete</a>
+                </td>
             </tr>
+
+            <?php
+                $value = $cart->product->price + $value;
+            ?>
+
             @endforeach
         </table>
+        <h3>Total: Rp. {{$value}}</h3>
     </div>
 
     @include('home.footer')
