@@ -53,4 +53,17 @@ class HomeController extends Controller
 
         return redirect('/');
     }
+
+    public function viewCart(): Response
+    {
+        if ($user = Auth::user()) {
+            $userId = $user->id;
+            $count = Cart::where('user_id', $userId)->count();
+            $carts = Cart::where('user_id', $userId)->get();
+        } else {
+            $count = '';
+        }
+
+        return response()->view('home.carts', compact('count', 'carts'));
+    }
 }
