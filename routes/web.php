@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'home');
     Route::get('/product/detail/{id}', 'productDetail');
+    Route::get('/product/add-cart/{id}', 'addCart')->middleware('auth');
 });
 
 Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(function () {

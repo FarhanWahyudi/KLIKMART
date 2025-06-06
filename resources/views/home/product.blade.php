@@ -9,7 +9,7 @@
             @foreach($products as $product)
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="box">
-                    <a href="">
+                    <!-- <a href=""> -->
                         <div class="img-box">
                             <img src="{{asset('/products/' . $product->image)}}" alt="">
                         </div>
@@ -24,15 +24,16 @@
                                 </span>
                             </h6>
                         </div>
-                        <div>
-                            <a class="btn btn-success" href="{{url('/product/detail', $product->id)}}" style="color: white;">Details</a>
+                        <div class="options-container">
+                            <a class="btn btn-danger" href="{{url('/product/detail', $product->id)}}" style="color: white;">Details</a>
+                            <a class="btn btn-success" href="{{url('/product/add-cart', $product->id)}}" style="color: white;">Add to Cart</a>
                         </div>
                         <div class="new">
                             <span>
                                 New
                             </span>
                         </div>
-                    </a>
+                    <!-- </a> -->
                 </div>
             </div>
             @endforeach

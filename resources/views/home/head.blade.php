@@ -30,4 +30,9 @@ Giftos
         background-color:transparent;
         margin-right: 10px;
     }
+
+    .options-container {
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
