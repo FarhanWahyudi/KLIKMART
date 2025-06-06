@@ -14,13 +14,29 @@ class HomeController extends Controller
     public function home(): Response
     {
         $products = Product::all();
-        return response()->view('home.index', compact('products'));
+
+        if ($user = Auth::user()) {
+            $userId = $user->id;
+            $count = Cart::where('user_id', $userId)->count();
+        } else {
+            $count = '';
+        }
+
+        return response()->view('home.index', compact('products', 'count'));
     }
 
     public function productDetail(string $id): Response
     {
         $productDetail = Product::find($id);
-        return response()->view('home.productDetail', compact('productDetail'));
+
+        if ($user = Auth::user()) {
+            $userId = $user->id;
+            $count = Cart::where('user_id', $userId)->count();
+        } else {
+            $count = '';
+        }
+
+        return response()->view('home.productDetail', compact('productDetail', 'count'));
     }
 
     public function addCart(string $id): RedirectResponse
