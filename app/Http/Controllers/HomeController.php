@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -72,6 +73,23 @@ class HomeController extends Controller
         Cart::findOrFail($id)->delete();
         toastr()->closeButton()->addSuccess('Product Delete from the Cart Successfully');
 
+        return redirect()->back();
+    }
+
+    public function confirmOrder(Request $request): RedirectResponse
+    {
+        $userId = Auth::user()->id;
+        $carts = Cart::where('user_id', $userId)->get();
+        foreach ($carts as $cart) {
+            Order::create([
+                'name' => $request->name,
+                'rec_address' => $request->address,
+                'phone' => $request->phone,
+                'user_id' => $userId,
+                'product_id' => $cart->product_id
+            ]);
+            Cart::find($cart->id)->delete();
+        }
         return redirect()->back();
     }
 }

@@ -47,6 +47,33 @@
                 }
             }
         }
+
+        .order-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            div {
+                display: flex;
+                align-items: start;
+                gap: 50px;
+
+                label {
+                    display: inline-block;
+                    width: 150px;
+                }
+
+                input {
+                    width: 300px;
+                    outline: none;
+                }
+
+                textarea {
+                    width: 300px;
+                    height: 100px;
+                    outline: none;
+                }
+            }
+        }
     </style>
 </head>
 
@@ -91,6 +118,24 @@
             @endforeach
         </table>
         <h3>Total: Rp. {{$value}}</h3>
+        <form action="{{url('confirm-order')}}" method="post" class="order-container">
+            @csrf
+            <div>
+                <label for="name">Receiver Name</label>
+                <input type="text" name="name" id="name" value="{{Auth::user()->name}}">
+            </div>
+            <div>
+                <label for="address">Receiver Address</label>
+                <textarea name="address" id="address">{{Auth::user()->address }}</textarea>
+            </div>
+            <div>
+                <label for="phone">Receiver Phone</label>
+                <input type="number" name="phone" id="phone" value="{{Auth::user()->phone}}">
+            </div>
+            <div>
+                <input class="btn btn-primary" type="submit" value="submit">
+            </div>
+        </form>
     </div>
 
     @include('home.footer')
