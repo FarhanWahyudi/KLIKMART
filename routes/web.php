@@ -12,6 +12,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/mycart', 'viewCart')->middleware('auth');
     Route::get('/product/delete/{id}', 'deleteCart')->middleware('auth');
     Route::post('/confirm-order', 'confirmOrder')->middleware('auth');
+    Route::get('/myorders', 'viewOrders')->middleware('auth');
 });
 
 Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(function () {

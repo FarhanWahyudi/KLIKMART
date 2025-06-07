@@ -92,4 +92,17 @@ class HomeController extends Controller
         }
         return redirect()->back();
     }
+
+    public function viewOrders(): Response {
+        $userId = Auth::user()->id;
+        $orders = Order::where('user_id', $userId)->get();
+        if ($user = Auth::user()) {
+            $userId = $user->id;
+            $count = Cart::where('user_id', $userId)->count();
+        } else {
+            $count = '';
+        }
+
+        return response()->view('home.orders', compact('count', 'orders'));
+    }
 }
