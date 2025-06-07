@@ -27,5 +27,9 @@
                 <li><a href="{{url('/admin/view-products')}}">View Products</a></li>
             </ul>
         </li>
+        <li>
+            <a href="{{url('/admin/orders')}}">
+            <i class="icon-grid"></i>Orders </a>
+        </li>
     </ul>
 </nav>

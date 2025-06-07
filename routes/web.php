@@ -28,11 +28,9 @@ Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(
     Route::get('/admin/update-product/{id}', 'updateProduct');
     Route::post('/admin/update-product/{id}', 'postUpdateProduct');
     Route::get('/admin/product-search', 'searchProduct');
+    Route::get('/admin/orders', 'viewOrders');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -40,5 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

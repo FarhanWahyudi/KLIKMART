@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -144,5 +146,12 @@ class AdminController extends Controller
         $products = Product::where('title', 'LIKE', '%' . $search . '%')->paginate(3);
 
         return response()->view('admin.viewProducts', compact('products', 'search'));
+    }
+
+    
+    public function viewOrders(): Response
+    {
+        $orders = Order::all();
+        return response()->view('admin.orders', compact('orders'));
     }
 }
