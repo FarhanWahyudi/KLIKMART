@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,9 +16,14 @@ use function PHPUnit\Framework\fileExists;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
-        return view('admin.index');
+        $users = User::where('user_type', 'user')->get()->count();
+        $products = Product::all()->count();
+        $orders = Order::all()->count();
+        $delivered = Order::where('status', 'Delivered')->get()->count();
+
+        return response()->view('admin.index', compact('users', 'products', 'orders', 'delivered'));
     }
 
     public function viewCategory()

@@ -11,7 +11,8 @@
     </div>
     <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
     <ul class="list-unstyled">
-        <li class="active"><a href="{{url('/admin/dashboard')}}">
+        <li>
+            <a href="{{url('/admin/dashboard')}}">
             <i class="icon-home"></i>Home </a>
         </li>
         <li>
