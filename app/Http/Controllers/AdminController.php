@@ -154,4 +154,20 @@ class AdminController extends Controller
         $orders = Order::all();
         return response()->view('admin.orders', compact('orders'));
     }
+
+    public function ontheway(string $id): RedirectResponse {
+        $order = Order::find($id);
+        $order->status = 'On the Way';
+        $order->update();
+
+        return redirect()->back();
+    }
+
+    public function delivered(string $id): RedirectResponse {
+        $order = Order::find($id);
+        $order->status = 'Delivered';
+        $order->update();
+
+        return redirect()->back();
+    }
 }

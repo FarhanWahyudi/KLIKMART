@@ -67,6 +67,7 @@
                                     <th>Price</th>
                                     <th>Image</th>
                                     <th>Status</th>
+                                    <th>Change Status</th>
                                 </tr>                                
                                 @foreach($orders as $order)
                                 <tr>
@@ -81,7 +82,19 @@
                                         @endphp
                                         <div class="image-container" style="background-image: url('{{$imageUrl}}')"></div>
                                     </td>
-                                    <td>{{$order->status}}</td>
+                                    <td>
+                                        @if($order->status == 'in progress')
+                                        <span style="color: red">{{$order->status}}</span>
+                                        @elseif($order->status == 'On the Way')
+                                        <span style="color: yellow">{{$order->status}}</span>
+                                        @else
+                                        <span style="color: green">{{$order->status}}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger" href="{{url('/on-the-way', $order->id)}}">On the Way</a>
+                                        <a class="btn btn-success" href="{{url('/delivered', $order->id)}}">Delivered</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </table>
